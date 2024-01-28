@@ -1,7 +1,38 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
 
+class MenuItem(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='menu_images/')
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    category = models.ManyToManyField('Category', related_name='item')
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class OrderModel(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    items = models.ManyToManyField('MenuItem', related_name='order', blank=True)
+
+    def __str__(self):
+        return f'Order: {self.created_on.strftime("%b %d %I: %M %p")}'
+
+
+
+
+"""
 class Profile(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,7 +53,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=255)
     product_price = models.CharField(max_length=255)
     description = models.TextField()
-    images = models.CharField(max_length=255)
+    images = models.ImageField(upload_to='menu_images')
 
 
 class ProductOrder(models.Model):
@@ -49,4 +80,4 @@ class Restaurant(models.Model):
 class Rating(models.Model):
     id = models.AutoField(primary_key=True)
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
-    rate = models.IntegerField()
+    rate = models.DecimalFielfrom django.contrib import admind(max_digits=5, decimal_places=2)"""
