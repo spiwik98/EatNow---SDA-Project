@@ -1,5 +1,13 @@
 from django.contrib import admin
+from .models import MenuItem, Category, OrderModel
 
+
+admin.site.register(MenuItem)
+admin.site.register(Category)
+admin.site.register(OrderModel)
+
+
+"""
 from customer.models import Profile, Order, Product, ProductOrder, CuisineType, Restaurant, Rating
 
 
@@ -49,4 +57,4 @@ class RatingAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Rating, RatingAdmin)
+admin.site.register(Rating, RatingAdmin)"""
