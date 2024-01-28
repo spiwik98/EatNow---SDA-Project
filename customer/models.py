@@ -22,7 +22,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=255)
     product_price = models.CharField(max_length=255)
     description = models.TextField()
-    images = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='menu')
 
 
 class ProductOrder(models.Model):
