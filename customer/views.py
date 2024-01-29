@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
+from django.core.mail import send_mail
 from .models import MenuItem, Category, OrderModel
+
 
 
 class Index(View):
@@ -15,7 +17,7 @@ class About(View):
 
 class Order(View):
     def get(self, request, *args, **kwargs):
-        appetizers = MenuItem.objects.filter(category__name__icontains='Apetizer')
+        appetizers = MenuItem.objects.filter(category__name__icontains='Appetizer')
         entres = MenuItem.objects.filter(category__name__icontains='Entre')
         desserts = MenuItem.objects.filter(category__name__icontains='Dessert')
         drinks = MenuItem.objects.filter(category__name__icontains='Drink')
@@ -30,6 +32,14 @@ class Order(View):
         return render(request, 'customer/order.html', context)
 
     def post(self, request, *args, **kwargs):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        street = request.POST.get('street')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        zip_code = request.POST.get('zip_code')
+
+
         order_items = {
             'items': []
         }
@@ -39,12 +49,12 @@ class Order(View):
         for item in items:
             menu_item = MenuItem.objects.get(pk=int(item))
             item_data = {
-                'id': menu_item.pl,
+                'id': menu_item.pk,
                 'name': menu_item.name,
                 'price': menu_item.price
             }
 
-            order_items['items'].append((item_data))
+            order_items['items'].append(item_data)
 
             price = 0
             item_ids = []
@@ -53,15 +63,60 @@ class Order(View):
                 price += item['price']
                 item_ids.append(item['id'])
 
-            order = OrderModel.objects.create(price=price)
+            order = OrderModel.objects.create(
+                price=price,
+                name=name,
+                email=email,
+                street=street,
+                city=city,
+                state=state,
+                zip_code=zip_code)
+
             order.items.add(*item_ids)
 
-            context = {
+            # After everything is done, send confirmation email to the user
+            body = ('Thank you for your order! Your food is being made and will be delivered soon!\n'
+                    f'Your total: {price}\n'
+                    'Thank you again for your order!')
+
+            send_mail(
+                'Thank You For Your Order!',
+                body,
+                'example@example.com',
+                [email],
+                fail_silently=False
+            )
+
+        context = {
                 'items': order_items['items'],
-                'price': price
+                'price': price,
             }
 
-            return render(request, 'customer/order_confirmation.html', context)
+        return redirect('order-confirmation', pk=order.pk)
+
+
+
+class OrderConfirmation(View):
+    def get(self, request, pk, *args, **kwargs):
+        order = OrderModel.objects.get(pk=pk)
+
+        context = {
+            'pk': order.pk,
+            'items': order.items.all(),
+            'price': order.price,
+        }
+
+        return render(request, 'customer/order_confirmation.html', context)
+
+    def post(self, request, pk, *args, **kwargs):
+        print(request.body)
+
+
+class OrderPayConfirmation(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'customer/order_pay_confirmation.html')
+
+
 
 class Restaurant(View):
     def get(self, request, *args, **kwargs):

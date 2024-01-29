@@ -13,12 +13,20 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5 col-sm-12 text-center">
             <h3 class="pb-3">Order Summary:</h3>
-            {% for item in items %}
+
+           {% for item in items %}
                 <p>{{ item.name }} <span class="pl-3">{{ item.price }}</span></p>
             {% endfor %}
 
             <p class="font-weight-bold pt-4">Total: {{ price }}</p>
         </div>
     </div>
+
+    <div class="row justify-content-center pb-2 pt-5">
+        <div class="col-md-6 text-center">
+            <h3> Pay With Cash/Card At Delivery</h3>
+        </div>
+    </div>
+
 </div>
 {% endblock content %}

@@ -1,14 +1,19 @@
-<footer class="page-footer font-small grey fixed-bottom">
+<div class="wrapper">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small dark-grey">
+        <!-- Footer content goes here -->
+    </footer>
     <div class="footer-copyright text-center py-3">&copy; 2020 Copyright:
         <a href="http://localhost:8000">EatNow</a>
 
         <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" style="color: white" href="{% url 'joinus' %}">Join Us!</a>
+        <a class="nav-link"  style="color: grey" href="{% url 'joinus' %}">Join Us!</a>
       </li>
     </ul>
 
     </div>
-</footer>
-
 
