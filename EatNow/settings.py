@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eatnow',
-        'USER': 'user',
-        'PASSWORD': 'pass',
+        'USER': 'root',
+        'PASSWORD': 'root123',
         'PORT': 3306,
         'HOST': '127.0.0.1',
     }

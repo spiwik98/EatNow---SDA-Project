@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 
+
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -36,6 +37,8 @@ class OrderModel(models.Model):
 
     def __str__(self):
         return f'Order: {self.created_on.strftime("%b %d %I: %M %p")}'
+
+
 
 
 
