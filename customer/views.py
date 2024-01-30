@@ -41,6 +41,7 @@ class Order(View):
         zip_code = request.POST.get('zip_code')
 
 
+
         order_items = {
             'items': []
         }
@@ -123,6 +124,14 @@ class Restaurant(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/restaurant.html')
 
+class Restaurants(View):
+    def get(self, request, *args, **kwargs):
+        menu_items = MenuItem.objects.all()
+        context = {
+            'menu_items': menu_items,
+        }
+        return render(request, 'customer/Restaurants.html', context)
+
 
 class LogInCreateAccount(View):
     def get(self, request, *args, **kwargs):
@@ -152,3 +161,5 @@ class MenuSearch(View):
             'menu_items': menu_items
         }
         return render(request, 'customer/menu.html', context)
+
+
