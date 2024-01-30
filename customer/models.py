@@ -38,6 +38,13 @@ class OrderModel(models.Model):
     def __str__(self):
         return f'Order: {self.created_on.strftime("%b %d %I: %M %p")}'
 
+class RestaurantName(models.Model):
+    id = models.AutoField(primary_key=True)
+    Name = models.CharField(max_length=255)
+    products = models.ManyToManyField(MenuItem)
+
+
+
 
 
 
@@ -79,16 +86,11 @@ class CuisineType(models.Model):
     cuisine_type_name = models.CharField(max_length=255)
 
 
-class Restaurant(models.Model):
-    id = models.AutoField(primary_key=True)
-    restaurant_name = models.CharField(max_length=255)
-    cuisine_type = models.ForeignKey(CuisineType, on_delete=models.CASCADE)
-    restaurant_address = models.CharField(max_length=255)
-    restaurant_website = models.CharField(max_length=255)
-    products = models.ManyToManyField(Product)
-
-
+    
 class Rating(models.Model):
     id = models.AutoField(primary_key=True)
     order = models.OneToOneField(Order, on_delete=models.CASCADE)
     rate = models.DecimalFielfrom django.contrib import admind(max_digits=5, decimal_places=2)"""
+
+
+
