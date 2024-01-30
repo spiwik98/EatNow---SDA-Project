@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail
-from .models import MenuItem, Category, OrderModel
+from .models import MenuItem, Category, OrderModel, RestaurantName, CuisineType
 from django.db.models import Q
 
 
@@ -120,19 +120,6 @@ class OrderPayConfirmation(View):
 
 
 
-class Restaurant(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'customer/restaurant.html')
-
-class Restaurants(View):
-    def get(self, request, *args, **kwargs):
-        menu_items = MenuItem.objects.all()
-        context = {
-            'menu_items': menu_items,
-        }
-        return render(request, 'customer/Restaurants.html', context)
-
-
 class LogInCreateAccount(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/login.html')
@@ -163,3 +150,23 @@ class MenuSearch(View):
         return render(request, 'customer/menu.html', context)
 
 
+
+class Restaurant(View):
+    def get(self, request, *args, **kwargs):
+        restaurant_items = RestaurantName.objects.all()
+        context = {
+            'restaurant_items': restaurant_items
+        }
+        return render(request, 'customer/restaurants.html', context)
+
+class RestaurantSearch(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+        restaurant_items = RestaurantName.objects.filter(
+            Q(type__name__icontains=query) |
+            Q(name__icontains=query)
+        )
+        context = {
+            'restaurant_items': restaurant_items,
+        }
+        return render(request, 'customer/restaurants.html', context)
