@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'EatNow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eatnow',
-        'USER': 'root',
-        'PASSWORD': 'admin',
+        'NAME': 'eatnow1',
+        'USER': 'user',
+        'PASSWORD': 'pass',
         'PORT': 3306,
         'HOST': '127.0.0.1',
     }

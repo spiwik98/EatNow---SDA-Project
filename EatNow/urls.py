@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, Restaurants, RestaurantsSearch
+from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -25,17 +25,12 @@ urlpatterns = [
     path('order/', Order.as_view(), name='order'),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
-    path('restaurant/', Restaurant.as_view(), name='restaurant'),
     path('login/', LogInCreateAccount.as_view(), name='login'),
     path('joinus/', JoinUs.as_view(), name='joinus'),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation'),
     path('payment-confirmation/', OrderPayConfirmation.as_view(), name='payment-submitted'),
     path('menu/', Menu.as_view(), name='menu'),
     path('menu/search/', MenuSearch.as_view(), name='menu-search'),
-
-    # Dodaj ścieżkę dla RestaurantsSearch
-    path('Restaurants/search/', RestaurantsSearch.as_view(), name='restaurants-search'),
-
-    path('Restaurants/', Restaurants.as_view(), name='Restaurants'),
+    path('restaurants/', Restaurant.as_view(), name='restaurants'),
+    path('restaurant/search/', RestaurantSearch.as_view(), name='cuisine-type-search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
