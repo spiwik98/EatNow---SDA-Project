@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, Restaurants
+from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, Restaurants, RestaurantsSearch
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -32,5 +32,10 @@ urlpatterns = [
     path('payment-confirmation/', OrderPayConfirmation.as_view(), name='payment-submitted'),
     path('menu/', Menu.as_view(), name='menu'),
     path('menu/search/', MenuSearch.as_view(), name='menu-search'),
+
+    # Dodaj ścieżkę dla RestaurantsSearch
+    path('Restaurants/search/', RestaurantsSearch.as_view(), name='restaurants-search'),
+
     path('Restaurants/', Restaurants.as_view(), name='Restaurants'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
