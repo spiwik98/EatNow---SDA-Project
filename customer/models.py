@@ -8,6 +8,8 @@ class MenuItem(models.Model):
     image = models.ImageField(upload_to='menu_images/')
     price = models.DecimalField(max_digits=5, decimal_places=2)
     category = models.ManyToManyField('Category', related_name='item')
+    restaurant = models.ForeignKey('RestaurantName', on_delete=models.CASCADE, null=True)
+
 
     def __str__(self):
         return self.name
@@ -44,7 +46,7 @@ class CuisineType(models.Model):
 
 class RestaurantName(models.Model):
     name = models.CharField(max_length=255, blank=True)
-    type = models.ForeignKey('CuisineType', on_delete=models.CASCADE)
+    type = models.ForeignKey('CuisineType', on_delete=models.CASCADE, null=True)
     address = models.CharField(max_length=255, blank=True)
     website = models.CharField(max_length=255, blank=True)
     image = models.ImageField(upload_to='restaurant_images/', blank=True)
