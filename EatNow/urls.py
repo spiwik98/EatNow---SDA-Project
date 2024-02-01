@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView, Cart
+from customer.views import Index, About, Restaurant, login_user, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView, Cart, signup_user, logout_user, profile
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -25,7 +25,8 @@ urlpatterns = [
     path('order/', Order.as_view(), name='order'),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
-    path('login/', LogInCreateAccount.as_view(), name='login'),
+    path('login_user/', login_user, name='login'),
+    path('signup_user/', signup_user, name='signup'),
     path('joinus/', JoinUs.as_view(), name='joinus'),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation'),
     path('payment-confirmation/', OrderPayConfirmation.as_view(), name='payment-submitted'),
@@ -35,5 +36,8 @@ urlpatterns = [
     path('restaurants/<int:restaurant_id>/', RestaurantMenuView.as_view(), name='restaurants_menu'),
     path('restaurant/search/', RestaurantSearch.as_view(), name='cuisine-type-search'),
     path('cart/', Cart.as_view(), name='cart'),
+    path('profile/', profile, name='profile'),
+    path('home/', profile, name='home'),
+    path('logout_user/', logout_user, name='logout_user'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
