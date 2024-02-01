@@ -274,5 +274,6 @@ class Cart(View):
                 'items': order_items['items'],
                 'price': price,
             }
+        request.session['items'] =[]
 
         return render(request, 'customer/order_confirmation.html', context)
