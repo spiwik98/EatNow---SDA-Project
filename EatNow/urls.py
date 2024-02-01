@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView
+from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView, Cart
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -34,5 +34,6 @@ urlpatterns = [
     path('restaurants/', Restaurant.as_view(), name='restaurants'),
     path('restaurants/<int:restaurant_id>/', RestaurantMenuView.as_view(), name='restaurants_menu'),
     path('restaurant/search/', RestaurantSearch.as_view(), name='cuisine-type-search'),
+    path('cart/', Cart.as_view(), name='cart'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

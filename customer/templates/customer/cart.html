@@ -1,5 +1,4 @@
-{% extends 'customer/menu_base.html' %}
-
+{% extends 'customer/cart_base.html' %}
 {% block content %}
 
 <!-- Restaurant Menu -->
@@ -11,7 +10,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="pt-5">
-                    {% for item in menu_items %}
+                    {% for item in items %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12">
                             <img class="rounded" src="{{ item.image.url }}" width="150" height="100"/>
@@ -19,25 +18,26 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ item.pk }}">
                                     <label class="form-check-label">{{ item.name }}</label>
                                 </div>
                                 <p class="font-weight-bold pl-5">{{ item.price }}</p>
                             </div>
-                            <p>{{ item.description }}</p>
-
-                            <p>{{ item.category.all}}</p>
                         </div>
                     </div>
                     <hr />
                 {% endfor %}
-                </div>
-<button type="submit" class="btn btn-dark" data-toggle="modal" data-target="#submitModal" >
-                  Add to Cart!
-                </button>
 
-<!-- QUESTIONNAIRE
-                <a> Client Order Form</a>
+
+                <div class="foot">
+                    <h3>Total</h3>
+                    <h2 id="total">$ {{total_price}}</h2>
+                </div>
+
+
+
+
+<!-- QUESTIONNAIRE -->
+                <h3> Client Order Form</h3>
 
                 <div class="form-group pt-3">
                 <label for="name">Full Name</label>
@@ -77,18 +77,15 @@
                     </div>
 
                     </div>
-                </div>
 
--->
-        <!-- Button trigger modal
+
+
+        <!-- Button trigger modal -->
                 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal" >
-                  Add to Cart!
-                </button>-->
-
-
-
+                  Submit Your Order!
+                </button>
         <!--<button class="btn btn-dark mt-5">Place Order!</button> -->
-        <!-- Modal
+        <!-- Modal -->
         <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -104,7 +101,7 @@
               </div>
             </div>
           </div>
-        </div>-->
+        </div>
 
             </form>
         </div>

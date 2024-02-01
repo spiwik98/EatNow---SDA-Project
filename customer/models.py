@@ -56,7 +56,6 @@ class RestaurantName(models.Model):
 
 
 
-
 """ class Profile(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
