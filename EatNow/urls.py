@@ -15,17 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from customer.views import Index, About, Restaurant, LogInCreateAccount, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView, Cart
+from django.urls import path, include
+
+from customer.views import Index, About, Restaurant, JoinUs, Order, OrderConfirmation, OrderPayConfirmation, Menu, MenuSearch, RestaurantSearch, RestaurantMenuView, Cart
 from django.conf.urls.static import static
 from django.conf import settings
+from register import views as v
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('order/', Order.as_view(), name='order'),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
-    path('login/', LogInCreateAccount.as_view(), name='login'),
     path('joinus/', JoinUs.as_view(), name='joinus'),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(), name='order-confirmation'),
     path('payment-confirmation/', OrderPayConfirmation.as_view(), name='payment-submitted'),
@@ -35,5 +38,12 @@ urlpatterns = [
     path('restaurants/<int:restaurant_id>/', RestaurantMenuView.as_view(), name='restaurants_menu'),
     path('restaurant/search/', RestaurantSearch.as_view(), name='cuisine-type-search'),
     path('cart/', Cart.as_view(), name='cart'),
+    path('register/', v.register, name='register'),
+    path('logout/', v.logout_view, name='logout'),
+    path('', include('django.contrib.auth.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
 
