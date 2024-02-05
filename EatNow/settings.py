@@ -60,11 +60,7 @@ ROOT_URLCONF = 'EatNow.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
         'DIRS': [os.path.join(BASE_DIR, 'EatNow/static')],
-=======
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
->>>>>>> 7070e5a295172cad305ebd9d2995a29407b1bbad
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eatnow1',
-        'USER': 'root',
-        'PASSWORD': 'root123',
+        'USER': 'user',
+        'PASSWORD': 'pass',
         'PORT': 3306,
         'HOST': '127.0.0.1',
     }

@@ -1,15 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-=======
 
-
->>>>>>> 7070e5a295172cad305ebd9d2995a29407b1bbad
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
