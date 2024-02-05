@@ -12,6 +12,7 @@ from .decorators import unauthenticated_user
 
 
 
+
 class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')
@@ -275,6 +276,7 @@ class Cart(View):
                 'items': order_items['items'],
                 'price': price,
             }
+        request.session['items'] =[]
 
         request.session['items'] = []
         return render(request, 'customer/order_confirmation.html', context)
