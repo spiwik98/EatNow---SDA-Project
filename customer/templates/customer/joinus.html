@@ -1,34 +1,142 @@
 {% extends 'customer/base.html' %}
+
+
 {% block content %}
+<title>Join Us!</title>
+<div class="container mb-5">
 
-    <title>Join Us!</title>
-<body>
-<div>
-    <h1 style="color:Grey; font-size:40px;" ><b> Join Our Restaurant Community </b></h1>
-    <h3>Welcome to our Restaurant Network!</h3>
-
-    <p>Are you a restaurant owner looking to join our vibrant community? We'd love to have you on board.
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-10 col-sm-12 offset-md-1 p-4 text-center">
+    <h1 style="color:Grey; font-size:40px;"><b> Join Our Restaurant Community </b></h1>
+            <h3 style="color:Grey; font-size:15 px;">Welcome to our Restaurant Network!</h3>
+    <p style="color: darkGrey;">Are you a restaurant owner looking to join our vibrant community? We'd love to have you on board.
         Our network is all about connecting with great restaurants, sharing experiences, and delighting food enthusiasts.
         Join us to showcase your culinary expertise and become a part of our growing family.</p>
 
-    <h1> Join Us Today</h1>
-    <p>To become a part of our restaurant network, please fill out the form below with your restaurant details. We're excited to have you on board!</p>
-    <p>[Join Us Form]
+             <h1> Join Us Today</h1>
+    <p style="color: darkGrey;">To become a part of our restaurant network, please fill out the form below with your restaurant details. We're excited to have you on board!</p>
 
-<p>[Restaurant Name]: [Input Field]</p>
-<p>[Location]: [Input Field]</p>
-<p>[Cuisine Type]: [Input Field]</p>
-<p>[Contact Person]: [Input Field]</p>
-<p>[Contact Email]: [Input Field]</p>
-<p>[Contact Phone]: [Input Field]</p>
-<p>[Additional Information]: [Textarea]</p>
+<!-- QUESTIONNAIRE -->
 
-[Join Us Button]</p>
+<h3 style="color:Grey; font-size:40px;"><b> Join Us Form </b></h3>
+                <div class="form-group pt-3">
+                <label for="name"></label>
+                <input required class="form-control" type="text" placeholder="Restaurant Name" name="Restaurant Name" />
+                </div>
+
+                <div class="form-group pt-3">
+                <label for="name"></label>
+                <input required class="form-control" type="text" placeholder="Contact Email" name="Contact Email" />
+                </div>
+
+                <div class="form-group pt-3">
+                <label for="name"></label>
+                <input required class="form-control" type="text" placeholder="Contact Phone" name="Contact Phone" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                            <label for="name"></label>
+                            <input required class="form-control" type="text" placeholder="Contact Person" name="Contact Person" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                        <label for="name"></label>
+                        <input required class="form-control" type="text" placeholder="Additional Information" name="Additional Information" />
+                        </div>
+                    </div>
+
+
+                    </div>
+                </div>
+
+
+        <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal" >
+                  JOIN US!
+                </button>
+        <ul>
     <p>Thank you for considering joining our restaurant network. We look forward to showcasing the unique flavors and experiences your restaurant brings.</p>
-    <p>For any inquiries, please contact us at [restaurants@example.com].</p>
-    <h3>See you soon at EatNow Network!</h3>
+    <p>For any inquiries, please contact us at eatnow@company.com.</p>
+        </ul>
+
+        <ul><h3 style="color:Grey; font-size:40px;"><b> See you soon at EatNow Network! </b></h3></ul>
+
+
 
 </div>
-</body>
+
+ </div>
+    </div>
 
 {% endblock content %}
+
+
+
+
+<!-- QUESTIONNAIRE
+                <a> Join Us Form </a>
+
+                <div class="form-group pt-3">
+                <label for="name">Restaurant Name</label>
+                <input required class="form-control" type="text" placeholder="Your Name" name="name" />
+                </div>
+
+                <div class="form-group pt-3">
+                <label for="name">Contact Email</label>
+                <input required class="form-control" type="text" placeholder="example@company.com" name="email" />
+                </div>
+
+                <div class="form-group pt-3">
+                <label for="name">Contact Phone</label>
+                <input required class="form-control" type="text" placeholder="Main square 1" name="street" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                            <label for="name">Contact Person</label>
+                            <input required class="form-control" type="text" placeholder="Cracow" name="city" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group pt-3">
+                        <label for="name">Additional Information</label>
+                        <input required class="form-control" type="text" placeholder="Malopolska" name="state" />
+                        </div>
+                    </div>
+
+
+                    </div>
+                </div>
+
+-->
+        <!-- Button trigger modal
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal" >
+                  JOIN US!
+                </button>-->
+
+
+
+        <!--<button class="btn btn-dark mt-5">Place Order!</button> -->
+        <!-- Modal
+        <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="submitModalLabel">Submit Your Order!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Go Back</button>
+                <button type="submit" class="btn btn-dark">Place Order!</button>
+              </div>
+            </div>
+          </div>
+        </div>-->

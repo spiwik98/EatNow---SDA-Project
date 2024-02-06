@@ -203,7 +203,7 @@ class RestaurantMenuView(View):
 class Cart(View):
     def get(self, request, items_data=None, *args, **kwargs):
 
-        items = request.session["items"]
+        items = request.session.get("items", [])
 
         ordered_items=[]
         total_price=0
