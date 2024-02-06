@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MenuItem, Category, OrderModel, RestaurantName, CuisineType, Profile
+from .models import MenuItem, Category, OrderModel, RestaurantName, CuisineType
 
 
 admin.site.register(MenuItem)
@@ -7,7 +7,7 @@ admin.site.register(Category)
 admin.site.register(OrderModel)
 admin.site.register(RestaurantName)
 admin.site.register(CuisineType)
-admin.site.register(Profile)
+
 
 """
 from customer.models import Profile, Order, Product, ProductOrder, CuisineType, Restaurant, Rating
