@@ -1,22 +1,21 @@
 <div class="wrapper">
-        {% block content %}{% endblock %}
+        {% block content %}
+    {% endblock %}
     </div>
 
     <!-- Footer -->
-    <footer class="page-footer font-small dark-grey">
-        <!-- Footer content goes here -->
+ <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+    <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+    <p>Thank u for your order! </p>
+    <a class="w3-button w3-round-xxlarge w3-dark-grey w3-margin-bottom" href="#" target="_blank">Back to the top</a>
+            <div class="footer-copyright text-center py-3">&copy; 2024 Copyright:
+            <a href="http://localhost:8000">EatNow</a>
+
+            <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="{% url 'joinus' %}">Join Us!</a>
+          </li>
+        </ul>
+
+        </div>
     </footer>
-    <div class="footer-copyright text-center py-3">&copy; 2024 Copyright:
-        <a href="http://localhost:8000">EatNow</a>
-
-        <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link"  style="color: grey" href="{% url 'joinus' %}">Join Us!</a>
-      </li>
-            <li class="nav-item">
-        <a class="nav-link" style="color: grey" href="{% url 'about' %}">About Us</a>
-      </li>
-    </ul>
-
-    </div>
-

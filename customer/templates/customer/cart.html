@@ -9,7 +9,7 @@
         <div class="col-md-12 col-sm-12 p-4">
             <form method="POST">
                 {% csrf_token %}
-                <div class="pt-5">
+                <br class="pt-5">
                     {% for item in items %}
                     <div class="row">
                         <!--<div class="col-md-2 col-sm-12">
@@ -18,9 +18,9 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <label class="form-check-label">{{ item.name }}</label>
+                                    <label class="w3-xxlarge"><strong>{{ item.name }}</strong></label>
                                 </div>
-                                <p class="font-weight-bold pl-5">{{ item.price }}</p>
+                                <h2 class="font-weight-bold pl-5">{{ item.price }}</h2>
                             </div>
                         </div>
                     </div>
@@ -28,49 +28,52 @@
                 {% endfor %}
 
 
-                <div class="foot">
-                    <h3>Total</h3>
-                    <h2 id="total">$ {{total_price}}</h2>
+                <div class="foot pt-3 w3-xlarge font-weight-bold pl-5">
+                    <h1 class="pt-3 w3-xxlarge font-weight-bold pl-5 w3-center ">Total</h1>
+                    <h2 id="total" class="pt-3 w3-xxlarge font-weight-bold pl-5 w3-center">$ {{total_price}}</h2>
                 </div>
-
+                </br>
+                </br>
+                </br>
+                </br>
 
 
 
 <!-- QUESTIONNAIRE -->
-                <h3> Client Order Form</h3>
+                <h3><span class="w3-tag w3-xxxlarge"> Client Order Form </span></h3>
 
-                <div class="form-group pt-3">
+                <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                 <label for="name">Full Name</label>
                 <input required class="form-control" type="text" placeholder="Your Name" name="name" />
                 </div>
 
-                <div class="form-group pt-3">
+                <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                 <label for="name">Email Address</label>
                 <input required class="form-control" type="text" placeholder="example@company.com" name="email" />
                 </div>
 
-                <div class="form-group pt-3">
+                <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                 <label for="name">Street Address</label>
                 <input required class="form-control" type="text" placeholder="Main square 1" name="street" />
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
-                        <div class="form-group pt-3">
+                        <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                             <label for="name">City</label>
                             <input required class="form-control" type="text" placeholder="Cracow" name="city" />
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-12">
-                        <div class="form-group pt-3">
+                        <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                         <label for="name">State</label>
                         <input required class="form-control" type="text" placeholder="Malopolska" name="state" />
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-12">
-                        <div class="form-group pt-3">
+                        <div class="form-group pt-3 w3-xlarge font-weight-bold pl-5">
                         <label for="name">Zip Code</label>
                         <input required class="form-control" type="text" placeholder="31-730" name="zip" />
                         </div>
@@ -79,9 +82,8 @@
                     </div>
 
 
-
         <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#submitModal" >
+                <button type="button" class="w3-button w3-round-xlarge w3-black w3-margin-top w3-xlarge" data-toggle="modal" data-target="#submitModal" >
                   Submit Your Order!
                 </button>
         <!--<button class="btn btn-dark mt-5">Place Order!</button> -->
