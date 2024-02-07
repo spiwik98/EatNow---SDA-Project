@@ -1,19 +1,69 @@
-{% extends 'customer/base.html' %}
-
-    {% block title %}
-    Login Here
-    {% endblock %}
-
-{% load crispy_forms_tags %}
-
+{% extends 'customer/base_base.html' %}
 
 {% block content %}
-    <form method="Post" class="from-group">
 
-          {% csrf_token %}
-          {{form|crispy}}
-          <p>Don't have an account? Create one <a href="/register">here</a></p>
-          <button  type="submit" class="btn btn-success">Login</button>
 
-    </form>
+<html>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<head>
+            <title>EatNOW! Delivery Service</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+        <style>
+            body,
+            html {
+                height: 100%
+            }
+
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Amatic SC", sans-serif
+            }
+
+            .menu {
+                display: none
+            }
+
+
+
+        </style>
+
+
+    <div class="login" id="login">
+        {% block title %}
+        <h1 class="w3-center w3-jumbo font-weight-bold pl-5" style="margin-bottom:64px">Log in here!</h1>
+        {% endblock %}
+
+        <form method="Post" class="w3-center w3-xlarge font-weight-bold pl-5">
+            {% csrf_token %}
+            {{form}}
+                <p class="w3-center w3-xlarge font-weight-bold pl-5">Don't have an account? Create one <a href="/register"><span class="w3-tag w3-indigo w3-round">here!</span></a></p>
+                <button class="w3-button w3-round-xlarge w3-black w3-margin-top w3-xlarge" type="submit">Login</button>
+
+        </form>
+    </div>
+</head>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 {% endblock %}
+

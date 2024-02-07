@@ -1,22 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-dark grey">
-  <a class="navbar-brand"> Restaurant: {{ restaurant.name }}!</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Website</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'restaurants' %}"> Go Back to check other Restaurants</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'cart' %}">CART</a>
-        <!--<a class="nav-link" href="{% url 'cart' %}"><img class="rounded" src="media/media/favicon-16x16.png" width="35" height="35"/></a>-->
-      </li>
-    </ul>
-  </div>
-</nav>
+{% load static %}
+<html>
+    <head>
+        <title>EatNOW! Delivery Service</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
+       <style>
+            body,
+            html {
+                height: 100%
+            }
+
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Amatic SC", sans-serif
+            }
+
+            .menu {
+                display: none
+            }
+
+        </style>
+
+    <h1>
+
+
+    </h1>
+        <br>
+    </head>
+
+
+
+    <div class="w3-top w3-hide-small">
+        <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+            <a href="http://127.0.0.1:8000/" class="w3-bar-item w3-button">EatNow!</a>
+            <a href="#" class="w3-bar-item w3-button">Restaurant: {{ restaurant.name }}!</a>
+            <a href="{% url 'restaurants' %}" class="w3-bar-item w3-button">GO BACK</a>
+            <!--<a href="#about" class="w3-bar-item w3-button">ABOUT Us</a>-->
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-right w3-padding-16" >LOGOUT</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="w3-bar-item w3-button w3-right w3-padding-16">LOGIN</a>
+            {% endif %}
+            <a href="{% url 'cart' %}" class="w3-bar-item w3-button w3-right w3-padding-16">CART</a>
+        </div>
+    </div>
+
+

@@ -1,9 +1,9 @@
-{% extends 'customer/base.html' %}
+{% extends 'customer/base_base.html' %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6 col-sm-12 text-center">
-            <h1>EatNow! Restaurants List!</h1>
+            <h1 class="w3-xxlarge"><strong>EatNow! Restaurants List!</strong></h1>
         </div>
     </div>
     <div class="row justify-content-center mt-5">
@@ -11,7 +11,7 @@
             <!-- Search form -->
             <form method="GET" action="{% url 'cuisine-type-search' %}">
                 <div class="md-form mt-0 active-cyan-2">
-                    <input class="form-control" name="q" type="text" placeholder="Search your taste!" aria-label="Search" value="{{ request.GET.q }}">
+                    <input class="w3-xxlarge" name="q" type="text" placeholder="Search your taste!" aria-label="Search" value="{{ request.GET.q }}">
                 </div>
             </form>
         </div>
@@ -20,8 +20,8 @@
         {% for item in restaurant_items %}
         <div class="col-md-4 col-sm-12 text-center mb-5">
             <img class="rounded" src="{{ item.image.url }}" width="300" height="300"/>
-            <h5 class="mt-3">{{ item.name }}</h5>
-            <a href="{% url 'restaurants_menu' item.id %}" class="btn btn-outline-primary" >Order Now!</a>
+            <h5 class="w3-xxlarge"><strong>{{ item.name }}</strong></h5>
+            <a href="{% url 'restaurants_menu' item.id %}" class="w3-button w3-round-xxlarge w3-dark-grey w3-margin-bottom w3-xlarge"><strong>Order Now!</strong></a>
         </div>
         {% endfor %}
     </div>
