@@ -10,7 +10,6 @@ from django.dispatch import receiver
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='menu_images/')
     price = models.DecimalField(max_digits=5, decimal_places=2)
     category = models.ManyToManyField('Category', related_name='item')
     restaurant = models.ForeignKey('RestaurantName', on_delete=models.CASCADE, null=True)
@@ -22,6 +21,7 @@ class MenuItem(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='menu_images/', blank=True)
 
     def __str__(self):
         return self.name

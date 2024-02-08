@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'register',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_dump_load_utf8',
 ]
 
 MIDDLEWARE = [

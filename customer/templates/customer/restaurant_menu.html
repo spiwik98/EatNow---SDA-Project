@@ -3,7 +3,15 @@
 {% block content %}
 
 <!-- Restaurant Menu -->
-
+<html>
+  <head>
+    <style>
+      input.larger {
+        width: 40px;
+        height: 40px;
+      }
+    </style>
+  </head>
 
 <div class="container mb-5">
     <div class="row justify-content-center mt-1">
@@ -15,20 +23,24 @@
 
                     {% for item in menu_items %}
                     <div class="row">
-                        <!--<img class="rounded" src="{{ item.image.url }}" width="350" height="300"/>-->
+                        <p>{% for category in item.category.all %}
+                            <img class="rounded w3-round-xlarge w3-black w3-margin-top w3-xlarge" src="{{ category.image.url }}" width="300" height="300"/>
+                                {% endfor %}</p>
 
                         <div class="col-md-8 col-sm-12">
                             <div class="d-flex flex-row">
                                 <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ item.pk }}">
+                                    <input type="checkbox" name="items[]" class="form-check-input larger" value="{{ item.pk }}">
                                     <label class="font-weight-bold pl-5 w3-xxlarge"><strong>{{ item.name }}</strong></label>
                                 </div>
                                 <h2 class="font-weight-bold pl-5"><span class="w3-right w3-tag w3-black w3-round">{{ item.price }}</span></h2>
                             </div>
                             <p class="w3-xxlarge"><strong>Description: {{ item.description }}</strong></p>
 
+                            <!--<h3>{% for category in item.category.all %}
+                                <strong>{{category}}</strong>
+                                {% endfor %}</h3>-->
 
-                            <p>{% for cat in item.category.all %}{{cat}}{% endfor %}</p>
 
 
 
@@ -37,7 +49,7 @@
 
                 {% endfor %}
                 </div>
-<button type="submit" class="btn w3-button w3-round-xlarge w3-black w3-margin-top w3-xlarge" data-toggle="modal" data-target="#submitModal" >
+                <button type="submit" class="btn w3-button w3-round-xlarge w3-black w3-margin-top w3-xlarge" data-toggle="modal" data-target="#submitModal" >
                   Add to Cart!
                 </button>
 
