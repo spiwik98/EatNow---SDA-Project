@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'register',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_dump_load_utf8',
 ]
 
 MIDDLEWARE = [
@@ -82,9 +83,9 @@ WSGI_APPLICATION = 'EatNow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eatnow1',
-        'USER': 'user',
-        'PASSWORD': 'pass',
+        'NAME': 'eatnow2',
+        'USER': 'root',
+        'PASSWORD': 'root123',
         'PORT': 3306,
         'HOST': '127.0.0.1',
     }
