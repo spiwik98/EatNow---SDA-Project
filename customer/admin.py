@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import MenuItem, Category, OrderModel, RestaurantName, CuisineType
 
-
+# Rejestracja modeli w panelu admina
 admin.site.register(MenuItem)
 admin.site.register(Category)
 admin.site.register(OrderModel)

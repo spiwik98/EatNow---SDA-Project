@@ -8,22 +8,20 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
-
-
-
+# Kontroler odpowiadający za stronę główną
 class Index(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')
 
-
+# Kontroler odpowiadający za stronę "O nas"
 class About(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/about.html')
 
-
+# Kontroler obsługujący zamówienia
 class Order(View):
     def get(self, request, *args, **kwargs):
+        # Pobranie kategorii potraw do wyświetlenia
         appetizers = MenuItem.objects.filter(category__name__icontains='Appetizer')
         entres = MenuItem.objects.filter(category__name__icontains='Entre')
         desserts = MenuItem.objects.filter(category__name__icontains='Dessert')
@@ -39,6 +37,7 @@ class Order(View):
         return render(request, 'customer/order.html', context)
 
     def post(self, request, *args, **kwargs):
+        # Pobranie danych z formularza zamówienia
         name = request.POST.get('name')
         email = request.POST.get('email')
         street = request.POST.get('street')
@@ -46,14 +45,13 @@ class Order(View):
         state = request.POST.get('state')
         zip_code = request.POST.get('zip_code')
 
-
-
         order_items = {
             'items': []
         }
 
         items = request.POST.getlist('items[]')
 
+        # Przetworzenie wybranych pozycji menu
         for item in items:
             menu_item = MenuItem.objects.get(pk=int(item))
             item_data = {
@@ -67,10 +65,12 @@ class Order(View):
             price = 0
             item_ids = []
 
+            # Obliczenie całkowitej ceny zamówienia
             for item in order_items['items']:
                 price += item['price']
                 item_ids.append(item['id'])
 
+            # Utworzenie nowego zamówienia w bazie danych
             order = OrderModel.objects.create(
                 price=price,
                 name=name,
@@ -82,7 +82,7 @@ class Order(View):
 
             order.items.add(*item_ids)
 
-            # After everything is done, send confirmation email to the user
+            # Po złożeniu zamówienia, wysłanie potwierdzającego e-maila do użytkownika
             body = ('Thank you for your order! Your food is being made and will be delivered soon!\n'
                     f'Your total: {price}\n'
                     'Thank you again for your order!')
@@ -96,14 +96,14 @@ class Order(View):
             )
 
         context = {
-                'items': order_items['items'],
-                'price': price,
-            }
+            'items': order_items['items'],
+            'price': price,
+        }
 
+        # Przekierowanie na stronę potwierdzenia zamówienia
         return redirect('order-confirmation', pk=order.pk)
 
-
-
+# Kontroler potwierdzający zamówienie
 class OrderConfirmation(View):
     def get(self, request, pk, *args, **kwargs):
         order = OrderModel.objects.get(pk=pk)
@@ -119,18 +119,17 @@ class OrderConfirmation(View):
     def post(self, request, pk, *args, **kwargs):
         print(request.body)
 
-
+# Kontroler potwierdzający płatność za zamówienie
 class OrderPayConfirmation(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/order_pay_confirmation.html')
 
-
-
+# Kontroler obsługujący dołączanie do usługi
 class JoinUs(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/joinus.html')
 
-
+# Kontroler wyświetlający menu restauracji
 class Menu(View):
     def get(self, request, *args, **kwargs):
         menu_items = MenuItem.objects.all()
@@ -139,7 +138,7 @@ class Menu(View):
         }
         return render(request, 'customer/menu.html', context)
 
-
+# Kontroler wyszukiwania w menu
 class MenuSearch(View):
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get("q")
@@ -153,8 +152,7 @@ class MenuSearch(View):
         }
         return render(request, 'customer/menu.html', context)
 
-
-
+# Kontroler wyświetlający restauracje
 class Restaurant(View):
     def get(self, request, *args, **kwargs):
         restaurant_items = RestaurantName.objects.all()
@@ -163,6 +161,7 @@ class Restaurant(View):
         }
         return render(request, 'customer/restaurants.html', context)
 
+# Kontroler wyszukiwania restauracji
 class RestaurantSearch(View):
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get("q")
@@ -175,7 +174,7 @@ class RestaurantSearch(View):
         }
         return render(request, 'customer/restaurants.html', context)
 
-
+# Kontroler wyświetlający menu konkretnej restauracji
 class RestaurantMenuView(View):
     template_name = 'customer/restaurant_menu.html'
 
@@ -198,8 +197,7 @@ class RestaurantMenuView(View):
 
         return redirect('cart')
 
-
-
+# Kontroler koszyka zakupowego
 class Cart(View):
     def get(self, request, items_data=None, *args, **kwargs):
 
@@ -258,7 +256,7 @@ class Cart(View):
 
         order.items.add(*item_ids)
 
-        # After everything is done, send confirmation email to the user
+        # Po złożeniu zamówienia, wysłanie potwierdzającego e-maila do użytkownika
         body = ('Thank you for your order! Your food is being made and will be delivered soon!\n'
                 f'Your total: {price}\n'
                 'Thank you again for your order!')
@@ -272,11 +270,10 @@ class Cart(View):
         )
 
         context = {
-                'items': order_items['items'],
-                'price': price,
-            }
+            'items': order_items['items'],
+            'price': price,
+        }
         request.session['items'] =[]
 
         request.session['items'] = []
         return render(request, 'customer/order_confirmation.html', context)
-
