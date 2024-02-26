@@ -1,15 +1,8 @@
-from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import send_mail
-from .models import MenuItem, OrderModel, RestaurantName
+from .models import MenuItem, OrderModel, Restaurant
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-
-
-
 
 
 class Index(View):
@@ -154,19 +147,19 @@ class MenuSearch(View):
         return render(request, 'customer/menu.html', context)
 
 
-
-class Restaurant(View):
+class Restaurants(View):
     def get(self, request, *args, **kwargs):
-        restaurant_items = RestaurantName.objects.all()
+        restaurant_items = Restaurant.objects.all()
         context = {
             'restaurant_items': restaurant_items
         }
         return render(request, 'customer/restaurants.html', context)
 
+
 class RestaurantSearch(View):
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get("q")
-        restaurant_items = RestaurantName.objects.filter(
+        restaurant_items = Restaurant.objects.filter(
             Q(type__name__icontains=query) |
             Q(name__icontains=query)
         )
@@ -180,7 +173,7 @@ class RestaurantMenuView(View):
     template_name = 'customer/restaurant_menu.html'
 
     def get(self, request, restaurant_id, *args, **kwargs):
-        restaurant = RestaurantName.objects.get(pk=restaurant_id)
+        restaurant = Restaurant.objects.get(pk=restaurant_id)
 
         menu_items = restaurant.menuitem_set.all()
         print(menu_items)
@@ -277,6 +270,5 @@ class Cart(View):
             }
         request.session['items'] =[]
 
-        request.session['items'] = []
         return render(request, 'customer/order_confirmation.html', context)
 

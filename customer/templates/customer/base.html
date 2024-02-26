@@ -29,7 +29,7 @@
             .bgimg {
                 background-repeat: no-repeat;
                 background-size: cover;
-                background-image: url("https://www.w3schools.com/w3images/pizza.jpg");
+                background-image: url("media/background_pizza.jpg");
                 min-height: 90%;
             }
             .on-middle {
@@ -42,6 +42,7 @@
     </head>
 <body>
 
+
     <!-- Navbar (sit on top) -->
     <div class="w3-top w3-hide-small">
         <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
@@ -51,10 +52,10 @@
             <a href="{% url 'restaurants' %}" class="w3-bar-item w3-button">RESTAURANTS</a>
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-right w3-padding-16" >LOGOUT</a>
+            <a href="{% url 'cart' %}" class="w3-bar-item w3-button w3-right w3-padding-16">CART</a>
             {% else %}
             <a href="{% url 'login' %}" class="w3-bar-item w3-button w3-right w3-padding-16">LOGIN</a>
             {% endif %}
-            <a href="{% url 'cart' %}" class="w3-bar-item w3-button w3-right w3-padding-16">CART</a>
         </div>
     </div>
 
@@ -80,7 +81,7 @@
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="media/media/Uberr_Eats.webp" alt="Asian" style="width:100%">
+        <img src="media/Uberr_Eats.webp" alt="Uberr_Eats_photo" style="width:100%">
         <div class="w3-container">
           <h3>Uberr Eats</h3>
           <p class="w3-xxlarge">Uberr Eats lets you order meals from local restaurants through EatNow.</p>
@@ -90,7 +91,7 @@
 
         <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="media/media/wolt.jpg.webp" alt="Asian" style="width:100%">
+        <img src="media/wolt.jpg.webp" alt="Wolt_photo" style="width:100%">
         <div class="w3-container">
           <h3>WOLTT</h3>
           <p class="w3-xxlarge">Woltt makes it easy to discover and order whatever you want. We will deliver it to you quickly, reliably and affordably.</p>
@@ -100,7 +101,7 @@
 
         <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="media/media/glovo.webp" alt="Asian" style="width:100%">
+        <img src="media/glovo.webp" alt="Glovoo_photo" style="width:100%">
         <div class="w3-container">
           <h3>Glovoo</h3>
           <p class="w3-xxlarge">Glovoo is a Spanish start-up in the fast trading industry, founded in Barcelona in 2015. This is an on-demand courier service that purchases, collects and delivers products ordered through EatNow.</p>
@@ -110,7 +111,7 @@
 
         <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="media/media/boolt.webp" alt="Asian" style="width:100%">
+        <img src="media/boolt.webp" alt="Boolt" style="width:100%">
         <div class="w3-container">
           <h3>Boolt Food</h3>
           <p class="w3-xxlarge">Boolt Food is an online food delivery platform. Meals and groceries are delivered by couriers by car, scooter, bicycle or on foot.</p>
@@ -129,7 +130,7 @@
                 <p>Whether you're craving your favorite local delicacies or exploring new culinary adventures, we're here to elevate your dining experience</p>
             <p><strong>Are u hungry?</strong>
             <p>Try something new!</p></h1>
-            <img src="https://www.w3schools.com/w3images/onepage_restaurant.jpg" style="width:100%" class="w3-margin-top w3-margin-bottom"
+            <img src="media/down_background_restaurant.jpg" style="width:100%" class="w3-margin-top w3-margin-bottom"
                 alt="Restaurant">
         </div>
     </div>
@@ -165,7 +166,7 @@
                 and taste.</p>
             <p class="w3-xxlarge"><strong>Rate Us</strong> We appreciate every comment and rate!
             </p>
-            <form action="/action_page.php" target="_blank">
+            <form target="_blank">
                 <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Please leave a comment" required name="Please leave a comment">
                 </p>
                 <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Rate Us!" required
@@ -185,7 +186,7 @@
     <p>Thank u for your order! </p>
     <a class="w3-button w3-round-xxlarge w3-dark-grey w3-margin-bottom" href="#" target="_blank">Back to the top</a>
             <div class="footer-copyright text-center py-3">&copy; 2024 Copyright:
-            <a href="http://localhost:8000">EatNow</a>
+            <a href="{% url 'index' %}">EatNow</a>
 
             <ul class="navbar-nav mr-auto">
           <li class="nav-item">
