@@ -7,5 +7,3 @@ admin.site.register(Category)
 admin.site.register(OrderModel)
 admin.site.register(Restaurant)
 admin.site.register(CuisineType)
-
-

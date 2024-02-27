@@ -8,7 +8,6 @@
     </div>
     <div class="row justify-content-center mt-5">
         <div class="col-md-8 col-sm-12 text-center">
-            <!-- Search form -->
             <form method="GET" action="{% url 'menu-search' %}">
                 <div class="md-form mt-0 active-cyan-2">
                     <input class="form-control" name="q" type="text" placeholder="Search Our Menu" aria-label="Search" value="{{ request.GET.q }}">

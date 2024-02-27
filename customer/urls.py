@@ -6,7 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('order/', views.Order.as_view(), name='order'),
-    path('', views.Index.as_view(), name='index'),
+    path('', views.Index.as_view(), name='base'),
     path('about/', views.About.as_view(), name='about'),
     path('joinus/', views.JoinUs.as_view(), name='joinus'),
     path('order-confirmation/<int:pk>', views.OrderConfirmation.as_view(), name='order-confirmation'),

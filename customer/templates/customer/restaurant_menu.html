@@ -1,8 +1,6 @@
 {% extends 'customer/menu_base.html' %}
-
 {% block content %}
 
-<!-- Restaurant Menu -->
 <html>
   <head>
     <style>
@@ -36,24 +34,13 @@
                                 <h2 class="font-weight-bold pl-5"><span class="w3-right w3-tag w3-black w3-round">{{ item.price }}</span></h2>
                             </div>
                             <p class="w3-xxlarge"><strong>Description: {{ item.description }}</strong></p>
-
-                            <!--<h3>{% for category in item.category.all %}
-                                <strong>{{category}}</strong>
-                                {% endfor %}</h3>-->
-
-
-
-
                         </div>
                     </div>
-
                 {% endfor %}
                 </div>
                 <button type="submit" class="btn w3-button w3-round-xlarge w3-black w3-margin-top w3-xlarge" data-toggle="modal" data-target="#submitModal" >
                   Add to Cart!
                 </button>
-
-
             </form>
         </div>
     </div>
