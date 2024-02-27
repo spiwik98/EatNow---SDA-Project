@@ -37,7 +37,7 @@ We undertook this project because we recognized the growing demand for convenien
 
 
 ## Screenshots
-- ![Zrzut ekranu 2024-01-02 092108](https://github.com/SidorowiczPaulina/ShiftPlaner/assets/138161293/dc31895e-13c3-4ce1-b996-c6267f362a5c)
+
 
 
 ## Contact
