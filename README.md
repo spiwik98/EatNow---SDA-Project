@@ -37,7 +37,7 @@ We undertook this project because we recognized the growing demand for convenien
 
 
 ## Screenshots
-
+![Homepage](https://github.com/spiwik98/EatNow---SDA-Project/blob/c441a02fd139faf951887776d282807f3b65f2be/static/eatnow1.png)
 
 
 ## Contact
