@@ -37,6 +37,8 @@ We undertook this project because we recognized the growing demand for convenien
 
 
 ## Screenshots
+Homepage
+![Homepage](C:\zdPytPol\EatNow---SDA-Project\static\eatnow1.png)
 
 
 
