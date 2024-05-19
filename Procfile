@@ -1,0 +1,1 @@
+web: gunicorn EatNow---SDA-Project.wsgi

@@ -26,7 +26,7 @@ class RegisterFormTestCase(TestCase):
 
     def test_register_form_invalid_email(self):
         form_data = {
-            'email': 'invalidemail',  # Invalid email format
+            'email': 'invalidemail',
             'username': 'testuser',
             'password1': 'testpassword',
             'password2': 'testpassword',
@@ -40,7 +40,7 @@ class RegisterFormTestCase(TestCase):
             'email': 'test@example.com',
             'username': 'testuser',
             'password1': 'testpassword',
-            'password2': 'differentpassword',  # Different password
+            'password2': 'differentpassword',
         }
         form = RegisterForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -50,7 +50,7 @@ class RegisterFormTestCase(TestCase):
         form_data = {
             'email': 'test@example.com',
             'username': 'testuser',
-            'password1': 'short',  # Password too short
+            'password1': 'short',
             'password2': 'short',
         }
         form = RegisterForm(data=form_data)
