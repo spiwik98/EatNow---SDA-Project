@@ -73,11 +73,11 @@ WSGI_APPLICATION = 'EatNow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eatnow2',
-        'USER': 'root',
-        'PASSWORD': 'root123',
-        'PORT': 3306,
-        'HOST': '127.0.0.1',
+        'NAME': 'db-5lesbc5585ko',
+        'USER': 'db-5lesbc5585ko',
+        'PASSWORD': 'JjbXX2mDbX1UfwfycynOK2Yl',
+        'PORT': 11550,
+        'HOST': 'up-de-fra1-mysql-1.db.run-on-seenode.com',
     }
 }
 
