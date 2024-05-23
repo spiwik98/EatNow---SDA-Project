@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'eatnow2',
         'USER': 'root',
         'PASSWORD': 'root123',
-        'PORT': 10000,
+        'PORT': '10000',
         'HOST': '127.0.0.1',
     }
 }
