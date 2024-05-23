@@ -1,5 +1,9 @@
 from pathlib import Path
 import os
+from django.contrib.staticfiles.storage import (
+    ManifestStaticFilesStorage,
+    StaticFilesStorage,
+)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -36,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -117,6 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -136,5 +143,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = [
-    os.path.join(BASE_DIR, 'staticfiles')
+    os.path.join(BASE_DIR, 'staticfiles'), BASE_DIR/'assets'
     ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
