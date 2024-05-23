@@ -19,7 +19,7 @@ SECRET_KEY = str(os.getenv('django-insecure-4l*qy%$v351hvmu3yjcejvx*av+hdxz)!vi5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'eatnow-sda-project-3.onrender.com']
 
 
 # Application definition
