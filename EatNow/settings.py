@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 from django.contrib.staticfiles.storage import (
     ManifestStaticFilesStorage,
     StaticFilesStorage,
@@ -17,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('django-insecure-4l*qy%$v351hvmu3yjcejvx*av+hdxz)!vi5^us5@ydivd*g*$'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True')=="True"
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "eatnow-sda-project-3.onrender.com"]
 
@@ -75,16 +76,23 @@ WSGI_APPLICATION = 'EatNow.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eatnow2',
-        'USER': 'root',
-        'PASSWORD': 'root123',
-        'PORT': 10000,
-        'HOST': '127.0.0.2',
+if not DEBUG:
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-}
+
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'eatnow2',
+            'USER': 'root',
+            'PASSWORD': 'root123',
+            'PORT': 10000,
+            'HOST': '127.0.0.1',
+        }
+    }
 
 
 # Password validation
