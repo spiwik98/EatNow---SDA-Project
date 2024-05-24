@@ -85,12 +85,8 @@ else:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'eatnow2',
-            'USER': 'root',
-            'PASSWORD': 'root123',
-            'PORT': 10000,
-            'HOST': '127.0.0.1',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
